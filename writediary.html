@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Diary</title>
+  <meta name="description" content="Best diary for android and web with backup, restore, sync, passcode and more features">
+  <meta name="keywords" content="my diary app free noads no ads passcode backup restore sync web android">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+</head>
+
+<body>
+  <div class="modal" id="img_modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Image</h5> <button type="button" class="close" data-dismiss="modal"> <span>×</span> </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Insert Image URL" id="image_url_txt">
+          </div>
+          <p class="text-center my-1"> OR </p>
+          <div class="input-group">
+            <input type="file" class="form-control" id="image_file" accept=".jpg, .jpeg, .png,.gif">
+          </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="image_modal_save">Save changes</button> <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="vid_modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Video</h5> <button type="button" class="close" data-dismiss="modal"> <span>×</span> </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Video URL" id="video_url_txt">
+          </div>
+          <p class="text-center my-1"> OR </p>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Youtube Video URL" id="yt_video_url_txt">
+          </div>
+          <p class="text-center my-1"> OR </p>
+          <div class="input-group">
+            <input type="file" class="form-control" id="video_file" accept=".mp4">
+          </div>
+        </div>
+        <div class="modal-footer">
+         <button type="button" class="btn btn-primary" id="video_modal_save">Save changes</button> <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container"> <a class="navbar-brand" href="index.html">
+        <i class="fa d-inline fa-lg fa-circle-o"></i>
+        <b> My Diary</b>
+      </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar11">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar11">
+        <ul class="navbar-nav mr-auto">
+          
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li><div class="form-check ml-2 py-1"><input type="checkbox" class="form-check-input" id="htmlCheckbox" onchange="showHideHTMLCode(this)"><label class="form-check-label" for="formCheck-1" style="color: white;">HTML Code</label></div></li>
+          <li class="nav-item ml-2 py-1" id="helper_txt" style="color: white; display: none;"> </li>
+          <li><a class="btn navbar-btn btn-light ml-2 py-1" id="saveBtn" disabled="true">Save</a></li>
+        </ul> 
+      </div>
+    </div>
+  </nav>
+  <div class="py-2" id="main_nav" style="display: none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="nav nav-pills">
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('justifyLeft')"><i class="d-block fa fa-lg fa-align-left"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('justifyCenter')"><i class="d-block fa fa-lg fa-align-center"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('justifyRight')"><i class="d-block fa fa-lg fa-align-right"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('insertOrderedList')"><i class="d-block fa fa-lg fa-list-ol"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('insertUnorderedList')"><i class="d-block fa fa-lg fa-list-ul"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('indent')"><i class="d-block fa fa-lg fa-indent"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('outdent')"><i class="d-block fa fa-lg fa-outdent"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick=" document.execCommand('bold')"><i class="d-block fa fa-lg fa-bold"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('formatBlock',false,'<p>')"><i class="d-block fa fa-lg fa-font"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('italic')"><i class="d-block fa fa-lg fa-italic"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('formatBlock',false,'<h3>')"><i class="d-block fa fa-lg fa-header"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('underline')"><i class="d-block fa fa-lg fa-underline"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-target="#img_modal" data-toggle="modal"><i class="d-block fa fa-lg fa-picture-o"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-target="#vid_modal" data-toggle="modal"><i class="d-block fa fa-lg fa-video-camera"></i></a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" onclick="document.execCommand('undo')"><i class="d-block fa fa-lg fa-undo"></i></a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5" id="loading_icon">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto"><i class="fa fa-spinner fa-pulse fa-5x"></i></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-3" id="main_container" style="display: none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 border border-dark" id="html_container" style="height:550px; display:none;">
+          <p class="lead my-2">HTML CODE</p>
+          <textarea oninput="htmlChanged()" id="html_txt" style="width: 100%; height:480px;"></textarea>
+        </div>
+        <div id="content_container" class="col-md-9 border border-dark" style="overflow-y: scroll; height:550px; margin: auto;">
+          <p class="lead my-2" style="outline: none;" id="title_txt" contenteditable="true">Title</p>
+          <div class="input-group">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">Categories</button></div>
+            <input type="text" class="form-control" placeholder="Write Categories" id="categories_txt">
+          </div>
+          <p class="my-2" style="outline: none;" id="content_txt" contenteditable="true">Write here</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous" ></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
+  <script type="text/javascript" src="js/diary.js"></script>
+</body>
+
+</html>
