@@ -25,7 +25,7 @@ var currentUser = Parse.User.current();
     }else{
       console.log("new diary")
       currentDiary=new Diaries();
-      currentDiary.set("created_at")=new Date();
+      currentDiary.set("created_at",new Date());
       currentDiary.setACL(new Parse.ACL(Parse.User.current()));
       currentDiary.set("archive", false);
       currentDiary.set("user", currentUser);  
@@ -135,10 +135,6 @@ saveBtn.addEventListener("click", function() {
   }
 }
 
-function mAddVideo(t){
-  
-
-}
 var file;
 
 const mImgURL=document.getElementById('image_url_txt');
