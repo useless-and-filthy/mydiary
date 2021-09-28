@@ -25,6 +25,10 @@ var currentUser = Parse.User.current();
     }else{
       console.log("new diary")
       currentDiary=new Diaries();
+      currentDiary.set("created_at")=new Date();
+      currentDiary.setACL(new Parse.ACL(Parse.User.current()));
+      currentDiary.set("archive", false);
+      currentDiary.set("user", currentUser);  
       loading_icon.style.display='none';
       saveBtn.disabled = false;
       showUI();
@@ -66,12 +70,9 @@ saveBtn.addEventListener("click", function() {
   helper_txt.style.display="flex";
   saveBtn.disabled = true;
   helper_txt.innerHTML="Saving..."
-  currentDiary.setACL(new Parse.ACL(Parse.User.current()));
   currentDiary.set("title", title_txt.innerText);
   currentDiary.set("categories", getCategoriesArray());
   currentDiary.set("content", html_txt.value);
-  currentDiary.set("user", currentUser);
-  
   currentDiary.save().then((currentDiary) => {
     // Execute any logic that should take place after the object is saved.
     alert('Diary Saved');

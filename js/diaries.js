@@ -109,6 +109,10 @@ function addDiaryUI(data){
   card_title.className="card-title";
   card_title.innerHTML=data.get('title');
 
+  var card_created_at=document.createElement('p');
+  card_created_at.className="card-text";
+  card_created_at.innerHTML=data.get('created_at')+"";
+
   var card_text=document.createElement('p');
   card_text.className="card-text";
   card_text.innerHTML=data.get('content').replace(/<[^>]*>/g, '');
@@ -142,6 +146,7 @@ function addDiaryUI(data){
   card_btn.href="diary.html?id="+data.id;
 
   card_body.appendChild(card_title);
+  card_body.appendChild(card_created_at);
   card_body.appendChild(card_text);
   card_body.appendChild(card_btn);
 
